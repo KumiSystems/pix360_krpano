@@ -186,7 +186,7 @@ class KRPanoConverter:
             cur = url[:-5] + i + url[-4:]
             res = HTTPRequest(cur).open()
             assert res.getcode() == 200
-            fo = ContentFile(res.read())
+            fo = ContentFile(res.read(), name="{i}.jpg")
             file = File.objects.create(conversion=self.conversion, file=fo, mime_type="image/jpeg")
             output += [file]
 
